@@ -1,0 +1,57 @@
+Select * from Walmart_sales
+limit 10;
+
+SELECT Store, Weekly_Sales 
+FROM Walmart_Sales 
+LIMIT 5;
+
+
+SELECT * 
+FROM Walmart_Sales
+WHERE Holiday_Flag = 1;
+
+SELECT Store, Weekly_Sales 
+FROM Walmart_Sales
+ORDER BY Weekly_Sales DESC
+LIMIT 10;
+
+SELECT Store, SUM(Weekly_Sales) AS Total_Sales
+FROM Walmart_Sales
+GROUP BY Store
+ORDER BY Total_Sales DESC;
+
+SELECT MONTH(Date) AS Sales_Month, SUM(Weekly_Sales) AS Monthly_Sales
+FROM Walmart_Sales
+GROUP BY MONTH(Date)
+ORDER BY Sales_Month;
+
+SELECT Store, COUNT(*) AS Holiday_Weeks
+FROM Walmart_Sales
+WHERE Holiday_Flag = 1
+GROUP BY Store;
+
+SELECT MONTH(STR_TO_DATE(Date, '%d-%m-%Y')) AS Sales_Month,
+       SUM(Weekly_Sales) AS Monthly_Sales
+FROM Walmart_Sales
+GROUP BY Sales_Month
+ORDER BY Sales_Month;
+
+SELECT YEAR(STR_TO_DATE(Date, '%d-%m-%Y')) AS Sales_Year,
+       SUM(Weekly_Sales) AS Yearly_Sales
+FROM Walmart_Sales
+GROUP BY Sales_Year
+ORDER BY Sales_Year;
+
+SELECT Store, AVG(Weekly_Sales) AS Avg_Sales
+FROM Walmart_Sales
+GROUP BY Store
+HAVING Avg_Sales > 1500000
+ORDER BY Avg_Sales DESC;
+
+SELECT Store, Date, Weekly_Sales
+FROM (
+    SELECT Store, Date, Weekly_Sales,
+           ROW_NUMBER() OVER (PARTITION BY Store ORDER BY Weekly_Sales DESC) AS Rank_No
+    FROM Walmart_Sales
+) ranked
+WHERE Rank_No <= 3;
