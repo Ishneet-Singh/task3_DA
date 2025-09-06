@@ -1,6 +1,8 @@
 #Walmart Sales SQL Practice
 This project uses the Walmart Sales dataset to practice SQL queries. The dataset contains weekly sales data for multiple stores, along with additional features like holidays, temperature, fuel price, CPI, and unemployment rate.
 
+link to downloaad - https://www.kaggle.com/datasets/mikhail1681/walmart-sales
+
 📂 Dataset Details
 Rows: 6,435
 Columns:
