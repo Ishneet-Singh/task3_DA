@@ -55,3 +55,10 @@ FROM (
     FROM Walmart_Sales
 ) ranked
 WHERE Rank_No <= 3;
+
+
+OUTPUT FOR THIS IS HERE - https://drive.google.com/drive/folders/1hnNhWlr4RUg7_Heuwl5-gGlAsA7ugKVN?usp=share_link
+
+
+
+ooo
